@@ -14,9 +14,9 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.cli import CLI
 
-LEFT_HOST_NAME: str = 'left'
-MIDDLE_HOST_NAME: str = 'middle'
-RIGHT_HOST_NAME: str = 'right'
+LEFT_HOST_NAME: str = 'lft_h'
+MIDDLE_HOST_NAME: str = 'mid_h'
+RIGHT_HOST_NAME: str = 'rgt_h'
 
 
 class HostInTheMiddleTopo(Topo):
