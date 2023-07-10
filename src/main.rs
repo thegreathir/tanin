@@ -25,12 +25,15 @@ fn main() {
         .unwrap();
 
     loop {
-        if let Ok(packet) = cap1.next_packet() {
-            cap2.sendpacket(packet.data).unwrap();
-        }
+        mirror(&mut cap1, &mut cap2);
+        mirror(&mut cap2, &mut cap1);
+    }
+}
 
-        if let Ok(packet) = cap2.next_packet() {
-            cap1.sendpacket(packet.data).unwrap();
+fn mirror(src_cap: &mut Capture<pcap::Active>, dst_cap: &mut Capture<pcap::Active>) {
+    if let Ok(packet) = src_cap.next_packet() {
+        if let Err(e) = dst_cap.sendpacket(packet.data) {
+            println!("{}", e);
         }
     }
 }
