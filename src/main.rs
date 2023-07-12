@@ -14,7 +14,6 @@ fn main() {
         .unwrap()
         .setnonblock()
         .unwrap();
-
     let mut cap2 = Capture::from_device(device2.as_str())
         .unwrap()
         .promisc(true)
